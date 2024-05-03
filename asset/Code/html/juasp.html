@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/asset/Code/Style/areas.css">
+    <title>RESPONDEX - JURIDICA</title>
+</head>
+<body>
+    <!-- Encabezado con el logo del INPEC -->
+    <header>
+        <div class="logo">
+            <a href="../../../index.html">
+                <img src="/asset/Media/img/logo1.png" alt="Logo INPEC" width="100" height="100">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="../../../index.html">INICIO</a></li>
+                <li><a href="/asset/Code/html/direg.html">DIREG</a></li>
+                <li><a href="/asset/Code/html/arcuv.html">ARCUV</a></li>
+                <li><a href="/asset/Code/html/juasp.html">JUASP</a></li>
+                <li><a href="/asset/Code/html/artra.html">ARTRA</a></li>
+                <li><a href="/asset/Code/html/sisin.html">SISIN</a></li>
+                <li><a href="/asset/Code/html/ageco.html">AGECO</a></li>
+                <li><a href="/asset/Code/html/coint.html">COINT</a></li>
+                <li><a href="/asset/Code/html/plane.html">PLANE</a></li>
+                <li><a href="/asset/Code/html/cidis.html">CIDIS</a></li>
+                <li><a href="/asset/Code/html/artah.html">ARTAH</a></li>
+                <li><a href="/asset/Code/html/gedip.html">GEDIP</a></li>
+                <li><a href="/asset/Code/html/cervi.html">CERVI</a></li>
+                <li><a href="/asset/Code/html/gruju.html">GRUJU</a></li>
+                <li><a href="/asset/Code/html/consolidado.html">CONSOLIDADO</a></li>
+            </ul>
+        </nav>
+    </header>
+
+            <tbody>
+                <!-- Aquí se cargarán los radicados asignados a DIREG -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pie de página -->
+    <div id="registrosArea"></div>
+    <footer>
+        <hr>
+        <p>&copy; 2024 RESP-INPEC. Todos los derechos reservados.</p>
+        <a href="/asset/Code/html/bbddresp.html" title="Ver respuestas almacenadas">
+            <i class="fas fa-database"></i> Respuestas Almacenadas
+        </a>
+    </footer>
+
+<script>
+    function guardarRespuesta(index, radicado, fechaRadicado) {
+    const respuesta = document.getElementById(`resp-${index}`).value;
+    const fechaRespuesta = new Date().toLocaleDateString();
+    const area = "DIREG"; // Deberás cambiar esto por una variable o un valor fijo que identifique a cada área
+
+    // Construye el objeto de respuesta
+    const respuestaObj = {
+        radicado: radicado,
+        fechaRadicado: fechaRadicado,
+        respuesta: respuesta,
+        fechaRespuesta: fechaRespuesta,
+        const: area // Incluye el área aquí
+    };
+
+    // Guarda la respuesta en localStorage
+    let respuestas = JSON.parse(localStorage.getItem('respuestas') || '[]');
+    respuestas.push(respuestaObj);
+    localStorage.setItem('respuestas', JSON.stringify(respuestas));
+
+    alert('Respuesta guardada con éxito.');
+}
+
+</script>
+
+<script>
+window.onload = function() {
+    const registros = JSON.parse(localStorage.getItem('JUASP') || '[]');
+    if (registros.length > 0) {
+        const tabla = document.createElement('table');
+        tabla.innerHTML = `
+            <tr>
+                <th>Número de Radicado</th>
+                <th>Fecha de Radicado</th>
+                <th>Asunto</th>
+                <th>Entidad Remitente</th>
+                <th>Fecha de Registro</th>
+                <th>Área que Consolida</th>
+                <th>Contestar</th>
+                <th>Respuesta</th>
+                <th>Guardar</th>
+                <th>Eliminar</th> <!-- Nuevo encabezado para columna de eliminar -->
+            </tr>
+        `;
+        registros.forEach((reg, index) => {
+            const row = tabla.insertRow(-1);
+            row.innerHTML = `
+                <td>${reg.radicado}</td>
+                <td>${reg.fecha}</td>
+                <td>${reg.asunto}</td>
+                <td>${reg.entidad}</td>
+                <td>${new Date(reg.timestamp).toLocaleString()}</td>
+                <td>${reg.areaConsolida}</td>
+                <td><input type="checkbox" id="chk-${index}" onchange="toggleRespuesta('chk-${index}', 'resp-${index}')"></td>
+                <td><textarea id="resp-${index}" style="display:none;"></textarea></td>
+                <td><button onclick="guardarRespuesta(${index}, '${reg.radicado}', '${reg.fecha}')">Guardar</button></td>
+                <td><button onclick="solicitarContrasena(${index})"><i class='fas fa-trash'></i></button></td> <!-- Botón de eliminar con icono -->
+            `;
+        });
+        document.getElementById('registrosArea').appendChild(tabla);
+    } else {
+        document.getElementById('registrosArea').innerText = 'No hay registros para mostrar.';
+    }
+}
+
+function toggleRespuesta(checkboxId, textareaId) {
+    const checkbox = document.getElementById(checkboxId);
+    const textarea = document.getElementById(textareaId);
+    if (checkbox.checked) {
+        textarea.style.display = 'block';
+    } else {
+        textarea.style.display = 'none';
+    }
+}
+
+</script>
+
+<script>
+    function guardarRespuesta(index, radicado, fechaRadicado) {
+    const respuesta = document.getElementById(`resp-${index}`).value;
+    const fechaRespuesta = new Date().toLocaleDateString();
+    const area = "JUASP";
+
+    const respuestaObj = {
+        radicado: radicado,
+        fechaRadicado: fechaRadicado,
+        respuesta: respuesta,
+        fechaRespuesta: fechaRespuesta,
+        area: area
+    };
+
+    let respuestas = JSON.parse(localStorage.getItem('respuestas') || '[]');
+    respuestas.push(respuestaObj);
+    localStorage.setItem('respuestas', JSON.stringify(respuestas));
+
+    alert('Respuesta guardada con éxito.');
+}
+</script>
+<script>
+    function solicitarContrasena(index) {
+    const contrasena = prompt("Por favor, introduce la contraseña para eliminar:");
+    if (contrasena === "ADMIN500") {
+        eliminarRegistro(index);
+    } else {
+        alert("Contraseña incorrecta. No se puede eliminar el registro.");
+    }
+}
+
+function eliminarRegistro(index) {
+    let registros = JSON.parse(localStorage.getItem('JUASP') || '[]');
+    registros.splice(index, 1); // Elimina el registro del array
+    localStorage.setItem('JUASP', JSON.stringify(registros)); // Actualiza el localStorage
+    location.reload(); // Recarga la página para actualizar la tabla
+}
+</script>
+
+</body>
+</html>

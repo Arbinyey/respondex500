@@ -1,0 +1,167 @@
+/* Estilos globales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+header {
+    background-color: #004964;
+    padding: 10px;
+    text-align: center;
+}
+
+header .logo img {
+    vertical-align: middle;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 10px;
+}
+
+.container h1 {
+    color: #004964;
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bdbdbd;
+    border-radius: 10px;
+}
+
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.checkbox-grid div {
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #007391;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    margin-top: 10px;
+}
+
+footer hr {
+    border: none;
+    border-top: 1px solid #bdbdbd;
+   
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: white; /* Asegura que el enlace sea blanco */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    padding: 5px;
+    display: inline-block;
+}
+
+footer a:hover {
+    color: #ccc; /* Cambia el color al pasar el mouse por encima */
+    text-decoration: underline; /* Añade un subrayado al pasar el mouse por encima */
+}
+
+footer i {
+    margin-right: 5px; /* Añade un pequeño espacio entre el icono y el texto */
+}
+
+
+/*ESTILOS CONSOLIDADO*/
+
+/* Añadir este CSS a tu archivo index.css o crear un nuevo archivo específico para esta página si es necesario */
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+input[type="text"], button {
+    padding: 10px;
+    margin: 5px;
+}
+
+button {
+    background-color: #007391; /* Azul claro de INPEC */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005577;
+}
+

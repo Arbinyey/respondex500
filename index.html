@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/asset/Code/Style/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="/asset/Code/js/firebase-init.js"></script>
+    <title>RESPONDEX</title>
+</head>
+
+<body>
+    <!-- Encabezado con el logo del INPEC -->
+    <header>
+        <div class="logo">
+            <a href="../../../index.html">
+                <img src="/asset/Media/img/logo1.png" alt="Logo INPEC" width="100" height="100">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="../../../index.html">INICIO</a></li>
+                <li><a href="/asset/Code/html/direg.html">DIREG</a></li>
+                <li><a href="/asset/Code/html/arcuv.html">ARCUV</a></li>
+                <li><a href="/asset/Code/html/juasp.html">JUASP</a></li>
+                <li><a href="/asset/Code/html/artra.html">ARTRA</a></li>
+                <li><a href="/asset/Code/html/sisin.html">SISIN</a></li>
+                <li><a href="/asset/Code/html/ageco.html">AGECO</a></li>
+                <li><a href="/asset/Code/html/coint.html">COINT</a></li>
+                <li><a href="/asset/Code/html/plane.html">PLANE</a></li>
+                <li><a href="/asset/Code/html/cidis.html">CIDIS</a></li>
+                <li><a href="/asset/Code/html/artah.html">ARTAH</a></li>
+                <li><a href="/asset/Code/html/gedip.html">GEDIP</a></li>
+                <li><a href="/asset/Code/html/cervi.html">CERVI</a></li>
+                <li><a href="/asset/Code/html/gruju.html">GRUJU</a></li>
+                <li><a href="/asset/Code/html/consolidado.html">CONSOLIDADO</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+
+    <div class="container">
+        <h1>INFORMACIÓN DEL DOCUMENTO RECIBIDO</h1>
+        <p>Responde PQRS de forma rápida y eficiente</p>
+        <form id="formulario" onsubmit="guardarDocumento(event)">
+            <div class="form-group">
+                <label for="radicado">Número de Radicado:</label>
+                <input type="text" id="radicado" name="radicado" required>
+            </div>
+            <div class="form-group">
+                <label for="fecha">Fecha de Radicado:</label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+            <div class="form-group">
+                <label for="asunto">Asunto:</label>
+                <input type="text" id="asunto" name="asunto" required>
+            </div>
+            <div class="form-group">
+                <label for="entidad">Entidad Remitente:</label>
+                <input type="text" id="entidad" name="entidad" required>
+            </div>
+            <label for="areas">Áreas Asignadas:</label>
+            <div class="checkbox-grid">
+                <div>
+                    <input type="checkbox" id="direg" name="areas[]" value="DIREG">
+                    <label for="direg">DIREG</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="arcuv" name="areas[]" value="ARCUV">
+                    <label for="arcuv">ARCUV</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="juasp" name="areas[]" value="JUASP">
+                    <label for="juasp">JUASP</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="artra" name="areas[]" value="ARTRA">
+                    <label for="artra">ARTRA</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="sisin" name="areas[]" value="SISIN">
+                    <label for="sisin">SISIN</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="ageco" name="areas[]" value="AGECO">
+                    <label for="ageco">AGECO</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="coint" name="areas[]" value="COINT">
+                    <label for="coint">COINT</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="plane" name="areas[]" value="PLANE">
+                    <label for="plane">PLANE</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="cidis" name="areas[]" value="CIDIS">
+                    <label for="cidis">CIDIS</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="artah" name="areas[]" value="ARTAH">
+                    <label for="artah">ARTAH</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="gedip" name="areas[]" value="GEDIP">
+                    <label for="gedip">GEDIP</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="cervi" name="areas[]" value="CERVI">
+                    <label for="cervi">CERVI</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="gruju" name="areas[]" value="GRUJU">
+                    <label for="gruju">GRUJU</label>
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="areaConsolida">Área que consolida:</label>
+                <select id="areaConsolida" name="areaConsolida">
+                    <option value="Seleccion">Selección</option>
+                    <option value="DIREG">DIREG</option>
+                    <option value="ARCUV">ARCUV</option>
+                    <option value="JUASP">JUASP</option>
+                    <option value="ARTRA">ARTRA</option>
+                    <option value="SISIN">SISIN</option>
+                    <option value="AGECO">AGECO</option>
+                    <option value="COINT">COINT</option>
+                    <option value="PLANE">PLANE</option>
+                    <option value="CIDIS">CIDIS</option>
+                    <option value="ARTAH">ARTAH</option>
+                    <option value="GEDIP">GEDIP</option>
+                    <option value="CERVI">CERVI</option>
+                    <option value="GRUJU">GRUJU</option>
+                </select>
+            </div>
+
+            <input type="submit" value="Guardar">
+        </form>
+        
+    </div>
+
+    <footer>
+        <hr>
+        <p>&copy; 2024 RESP-INPEC. Todos los derechos reservados.</p>
+        <a href="/asset/Code/html/bbddresp.html" title="Ver respuestas almacenadas">
+            <i class="fas fa-database"></i> Respuestas Almacenadas
+        </a>
+    </footer>
+    
+
+    <script>
+        function guardarDocumento(event) {
+    event.preventDefault(); // Evita que el formulario se envíe
+
+    const form = document.getElementById('formulario');
+    const nuevoRegistro = {
+        radicado: form.radicado.value,
+        fecha: form.fecha.value,
+        asunto: form.asunto.value,
+        entidad: form.entidad.value,
+        areaConsolida: form.areaConsolida.value, // Asegurarse de capturar el área que consolida
+        timestamp: new Date().getTime() // Timestamp para ordenar cronológicamente
+    };
+
+    // Guardar en localStorage
+    document.querySelectorAll('#formulario input[name="areas[]"]:checked').forEach((checkbox) => {
+        const area = checkbox.value;
+        let registros = JSON.parse(localStorage.getItem(area) || '[]');
+        registros.push(nuevoRegistro);
+        localStorage.setItem(area, JSON.stringify(registros));
+    });
+
+    // Limpiar el formulario después de guardar
+    form.reset();
+    document.querySelectorAll('#formulario input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
+
+    alert('Documento guardado con éxito');
+}
+
+    </script>
+</body>
+
+</html>
